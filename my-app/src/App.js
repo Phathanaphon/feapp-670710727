@@ -4,7 +4,16 @@ import MovieList from './components/Movielist';
 import Footer from './components/Footer';
 import Greeting from './components/Greeting';
 import Card from './components/Card';
+import ProfileCard from './components/ProfileCard';
 
+const members = [
+  { id: 1, name: 'พัฒนพล', nickname: 'วีโก้',
+    major: 'เทคโนโลยีสารสนเทศ', favorites: ['ชานม', 'หมา'] },
+  {id: 2, name: 'ประกอบกิจ', nickname: 'เซฟ',
+    major: 'เทคโนโลยีสารสนเทศ', favorites: ['น้ำแอปเปิล', 'นกแก้ว']},
+  {id: 2, name: 'ประกอบปุย', nickname: 'แชมป์',
+    major: 'เทคโนโลยีสารสนเทศ', favorites: ['ชาเขียว', 'ลิง']}
+];
 const students = [
   { id: 1, name: 'ฝน', year: 3 },
   { id: 2, name: 'เต้ย', year: 2 },
@@ -12,16 +21,20 @@ const students = [
 ];
 
 function App() {
-  return (
-    <div>
-      <Card title="ประกาศ">
-        <p>สัปดาห์หน้าเรียนเรื่อง <b>State & Forms</b></p>
-        <p>อย่าลืม push การบ้านขึ้น GitHub!</p>
-      </Card>
-      <h1>รายชื่อนักศึกษา</h1>
-      {students.map((s) => (
-        <Greeting key={s.id} name={s.name} year={s.year} />
-      ))}
+   return (
+    <div className="container">
+      <h1>สมาชิกกลุ่มของเรา</h1>
+      <div className="card-row">
+        {members.map((m) => (
+          <ProfileCard
+            key={m.id}
+            name={m.name}
+            nickname={m.nickname}
+            major={m.major}
+            favorites={m.favorites}
+          />
+        ))}
+      </div>
     </div>
   );
 }
